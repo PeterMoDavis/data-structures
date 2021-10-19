@@ -120,6 +120,32 @@ class SinglyLinkedList {
     }
     return currentHead;
   }
+  unshift(val) {
+    let newNode = new Node(val);
+    if (!this.head) {
+      this.head = newNode;
+      this.tail = this.head;
+    } else {
+      newNode.next = this.head;
+      this.head = newNode;
+    }
+
+    this.length++;
+    return this;
+  }
+
+  get(index) {
+    if (index < 0 || index > this.length) {
+      return 'ya blew it ya idiot those are outside bounds!!';
+    }
+    let current = this.head;
+    let num = 0;
+    while (num < index) {
+      current = current.next;
+      num++;
+    }
+    return current;
+  }
 }
 
 // var first = new Node('Hi');
