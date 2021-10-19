@@ -135,14 +135,15 @@ class SinglyLinkedList {
   }
 
   get(index) {
-    if (index < 0 || index > this.length) {
+    if (index < 0 || index >= this.length) {
       return 'ya blew it ya idiot those are outside bounds!!';
     }
+    let counter = 0;
     let current = this.head;
-    let num = 0;
-    while (num < index) {
+
+    while (counter !== index) {
       current = current.next;
-      num++;
+      counter++;
     }
     return current;
   }
