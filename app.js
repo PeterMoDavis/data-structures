@@ -315,6 +315,50 @@ class DoublyLinkedList {
     this.length++;
     return this;
   }
+  get(index) {
+    if (index < 0 || index >= this.length) return null;
+    let count, current;
+    if (index <= this.length / 2) {
+      count = 0;
+      current = this.head;
+      while (count !== index) {
+        current = current.next;
+        count++;
+      }
+    } else {
+      count = this.length - 1;
+      current = this.tail;
+      while (count !== index) {
+        current = current.prev;
+        count--;
+      }
+    }
+    return current;
+  }
+  set(index, val) {
+    let foundNode = this.get(index);
+    if (foundNode) {
+      foundNode.val = val;
+      return true;
+    } else {
+      return false;
+    }
+  }
+  insert(index, val) {
+    if (index < 0 || index > this.length) return false;
+    if (index === 0) return !!this.unshift(val);
+    if (index === this.length) return !!this.push(val);
+
+    let newNode = new Node(val);
+    let beforeNode = this.get(index - 1);
+    let afterNode = beforeNode.next;
+
+    beforeNode.next = newNode;
+    (newNode.prev = beforeNode), (newNode.nex = afterNode);
+    afterNode.prev = newNode;
+    this.length++;
+    return true;
+  }
 }
 
 let list = new DoublyLinkedList();
@@ -323,3 +367,11 @@ list.push('FIRST');
 list.push('SECOND');
 list.push('THIRD');
 list.push('FOURTH');
+list.push('FIFTH');
+list.push('SIXTH');
+list.push('SEVENTH');
+list.push('EIGHTH');
+list.push('NINTH');
+list.push('TENTH');
+list.push('ELEVETH');
+list.push('TWELFTH');
