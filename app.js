@@ -390,3 +390,17 @@ list.push('NINTH');
 list.push('TENTH');
 list.push('ELEVETH');
 list.push('TWELFTH');
+
+// Big O of Doubly Linked Lists
+//Insertion - O(1)
+//Removal - 0(1)
+//Searching 0(n)
+//Access o(n)
+
+//Technically seareching is O(n/2), but thats still O(n);
+
+//RECAP
+
+//Doubly Linked Lists are almost identical to Singly Linked Lists except there is an additional pointer to previous nodes
+//Better than Singly Linked Lists for finding nodes and cand be done in half the time.
+//However, they do take up more memory considering the extra pointer.
