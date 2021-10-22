@@ -594,6 +594,23 @@ Edge-the connection between one node an another.
 //-Every node to the left of  a parent node is always elss than the parent.
 //-Every node to the right of a parent node is always greater than the parent.
 
+/*
+INSERTING A NODE
+Steps- Iteratively of Recursively
+-Create a new node
+-Starting at the root
+-Check if there is a root, if not-the root now becomes that new model.
+-If there is a root, check if the value of the new node is greater than or less than the value of the root.
+-If it is greater:
+-Check to see if there is a node to the right
+-if there is move to that node and repeat theses steps
+-if there  is not add that node as the right property
+-If it is less:
+-Check to see if there is a node to the left
+-If there is, move to that node and reepeat these steps.
+-If there is not, add that node as the left property.  
+*/
+
 class Node {
   constructor(value) {
     this.value = value;
@@ -606,10 +623,35 @@ class BinarySearchTree {
   constructor() {
     this.root = null;
   }
+  insert(value) {
+    var newNode = new Node(value);
+    if (this.root === null) {
+      this.root = newNode;
+      return this;
+    } else {
+      var current = this.root;
+      while (true) {
+        if (value === current.value) return undefined;
+        if (value < current.value) {
+          if (current.left === null) {
+            current.left = newNode;
+            return this;
+          } else {
+            current = current.left;
+          }
+        } else if (value > current.value) {
+          if (current.right === null) {
+            current.right = newNode;
+            return this;
+          } else {
+            current = current.right;
+          }
+        }
+      }
+    }
+  }
 }
 
 var tree = new BinarySearchTree();
-tree.root = new Node(10);
-tree.root.right = new Node(15);
-tree.root.left = new Node(7);
-tree.root.left.right = new Node(9);
+tree.insert(10);
+tree.insert(5);
