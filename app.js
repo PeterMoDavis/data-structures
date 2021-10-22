@@ -579,3 +579,17 @@ Edge-the connection between one node an another.
 //-Artificial Intelligence (Decision Tree)
 //-Folders are modeled in an operating system is a Tree.
 //-JSON- when you parse JSON it creates a tree structure.
+
+//Different Kinds of Trees
+//-Trees
+//-Binary Trees
+//-Binary Search Trees
+
+//BINARY TREES
+//-Each node can have a most, TWO CHILDREN.
+
+//BINARY SEARCH TREE
+//-Trees
+//-Each node can have at most, TWO CHILDREN.
+//-Every node to the left of  a parent node is always elss than the parent.
+//-Every node to the right of a parent node is always greater than the parent.
