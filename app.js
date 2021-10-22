@@ -241,155 +241,155 @@
 // --val
 // --next
 // --prev
-class Node {
-  constructor(val) {
-    this.val = val;
-    this.next = null;
-    this.prev = null;
-  }
-}
-// DoublyLinkedList
-// --head
-// --tail
-// --length
+// class Node {
+//   constructor(val) {
+//     this.val = val;
+//     this.next = null;
+//     this.prev = null;
+//   }
+// }
+// // DoublyLinkedList
+// // --head
+// // --tail
+// // --length
 
-class DoublyLinkedList {
-  constructor() {
-    this.head = null;
-    this.tail = null;
-    this.length = 0;
-  }
-  push(val) {
-    let newNode = new Node(val);
-    if (!this.head) {
-      this.head = newNode;
-      this.tail = newNode;
-    } else {
-      this.tail.next = newNode;
-      newNode.prev = this.tail;
-      this.tail = newNode;
-    }
-    this.length++;
-    return this;
-  }
+// class DoublyLinkedList {
+//   constructor() {
+//     this.head = null;
+//     this.tail = null;
+//     this.length = 0;
+//   }
+//   push(val) {
+//     let newNode = new Node(val);
+//     if (!this.head) {
+//       this.head = newNode;
+//       this.tail = newNode;
+//     } else {
+//       this.tail.next = newNode;
+//       newNode.prev = this.tail;
+//       this.tail = newNode;
+//     }
+//     this.length++;
+//     return this;
+//   }
 
-  pop() {
-    if (!this.head) return undefined;
-    let currentTail = this.tail;
-    if (this.length === 1) {
-      this.head = null;
-      this.tail = null;
-    } else {
-      this.tail = currentTail.prev;
-      this.tail.next = null;
-      currentTail.prev = null;
-    }
-    this.length--;
-    return currentTail;
-  }
+//   pop() {
+//     if (!this.head) return undefined;
+//     let currentTail = this.tail;
+//     if (this.length === 1) {
+//       this.head = null;
+//       this.tail = null;
+//     } else {
+//       this.tail = currentTail.prev;
+//       this.tail.next = null;
+//       currentTail.prev = null;
+//     }
+//     this.length--;
+//     return currentTail;
+//   }
 
-  shift() {
-    if (this.length === 0) return undefined;
-    let oldHead = this.head;
-    if (this.length === 1) {
-      this.head = null;
-      this.tail = null;
-    } else {
-      this.head = oldHead.next;
-      this.head.prev = null;
-      oldHead.next = null;
-    }
-    this.length--;
-    return oldHead;
-  }
-  unshift(val) {
-    let newNode = new Node(val);
-    if (this.length === 0) {
-      this.head = newNode;
-      this.tail = newNode;
-    } else {
-      this.head.prev = newNode;
-      newNode.next = this.head;
-      this.head = newNode;
-    }
-    this.length++;
-    return this;
-  }
-  get(index) {
-    if (index < 0 || index >= this.length) return null;
-    let count, current;
-    if (index <= this.length / 2) {
-      count = 0;
-      current = this.head;
-      while (count !== index) {
-        current = current.next;
-        count++;
-      }
-    } else {
-      count = this.length - 1;
-      current = this.tail;
-      while (count !== index) {
-        current = current.prev;
-        count--;
-      }
-    }
-    return current;
-  }
-  set(index, val) {
-    let foundNode = this.get(index);
-    if (foundNode) {
-      foundNode.val = val;
-      return true;
-    } else {
-      return false;
-    }
-  }
-  insert(index, val) {
-    if (index < 0 || index > this.length) return false;
-    if (index === 0) return !!this.unshift(val);
-    if (index === this.length) return !!this.push(val);
+//   shift() {
+//     if (this.length === 0) return undefined;
+//     let oldHead = this.head;
+//     if (this.length === 1) {
+//       this.head = null;
+//       this.tail = null;
+//     } else {
+//       this.head = oldHead.next;
+//       this.head.prev = null;
+//       oldHead.next = null;
+//     }
+//     this.length--;
+//     return oldHead;
+//   }
+//   unshift(val) {
+//     let newNode = new Node(val);
+//     if (this.length === 0) {
+//       this.head = newNode;
+//       this.tail = newNode;
+//     } else {
+//       this.head.prev = newNode;
+//       newNode.next = this.head;
+//       this.head = newNode;
+//     }
+//     this.length++;
+//     return this;
+//   }
+//   get(index) {
+//     if (index < 0 || index >= this.length) return null;
+//     let count, current;
+//     if (index <= this.length / 2) {
+//       count = 0;
+//       current = this.head;
+//       while (count !== index) {
+//         current = current.next;
+//         count++;
+//       }
+//     } else {
+//       count = this.length - 1;
+//       current = this.tail;
+//       while (count !== index) {
+//         current = current.prev;
+//         count--;
+//       }
+//     }
+//     return current;
+//   }
+//   set(index, val) {
+//     let foundNode = this.get(index);
+//     if (foundNode) {
+//       foundNode.val = val;
+//       return true;
+//     } else {
+//       return false;
+//     }
+//   }
+//   insert(index, val) {
+//     if (index < 0 || index > this.length) return false;
+//     if (index === 0) return !!this.unshift(val);
+//     if (index === this.length) return !!this.push(val);
 
-    let newNode = new Node(val);
-    let beforeNode = this.get(index - 1);
-    let afterNode = beforeNode.next;
+//     let newNode = new Node(val);
+//     let beforeNode = this.get(index - 1);
+//     let afterNode = beforeNode.next;
 
-    beforeNode.next = newNode;
-    (newNode.prev = beforeNode), (newNode.nex = afterNode);
-    afterNode.prev = newNode;
-    this.length++;
-    return true;
-  }
-  remove(index) {
-    if (index < 0 || index >= this.length) return undefined;
-    if (index === 0) return this.shift();
-    if (index === length - 1) return this.pop();
+//     beforeNode.next = newNode;
+//     (newNode.prev = beforeNode), (newNode.nex = afterNode);
+//     afterNode.prev = newNode;
+//     this.length++;
+//     return true;
+//   }
+//   remove(index) {
+//     if (index < 0 || index >= this.length) return undefined;
+//     if (index === 0) return this.shift();
+//     if (index === length - 1) return this.pop();
 
-    let foundNode = this.get(index);
-    let prevNode = foundNode.prev;
-    let nextNode = foundNode.next;
-    prevNode.next = nextNode;
-    nextNode.prev = prevNode;
-    foundNode.next = null;
-    foundNode.prev = null;
-    this.length--;
-    return foundNode;
-  }
-}
+//     let foundNode = this.get(index);
+//     let prevNode = foundNode.prev;
+//     let nextNode = foundNode.next;
+//     prevNode.next = nextNode;
+//     nextNode.prev = prevNode;
+//     foundNode.next = null;
+//     foundNode.prev = null;
+//     this.length--;
+//     return foundNode;
+//   }
+// }
 
-let list = new DoublyLinkedList();
+// let list = new DoublyLinkedList();
 
-list.push('FIRST');
-list.push('SECOND');
-list.push('THIRD');
-list.push('FOURTH');
-list.push('FIFTH');
-list.push('SIXTH');
-list.push('SEVENTH');
-list.push('EIGHTH');
-list.push('NINTH');
-list.push('TENTH');
-list.push('ELEVETH');
-list.push('TWELFTH');
+// list.push('FIRST');
+// list.push('SECOND');
+// list.push('THIRD');
+// list.push('FOURTH');
+// list.push('FIFTH');
+// list.push('SIXTH');
+// list.push('SEVENTH');
+// list.push('EIGHTH');
+// list.push('NINTH');
+// list.push('TENTH');
+// list.push('ELEVETH');
+// list.push('TWELFTH');
 
 // Big O of Doubly Linked Lists
 //Insertion - O(1)
@@ -404,8 +404,80 @@ list.push('TWELFTH');
 //Doubly Linked Lists are almost identical to Singly Linked Lists except there is an additional pointer to previous nodes
 //Better than Singly Linked Lists for finding nodes and cand be done in half the time.
 //However, they do take up more memory considering the extra pointer.
-
+//*********************************************************** */
 //STACKS
 //A LIFO data structure !
 
 //The last element added to the stack will be the fist element removed from the stack.  the first thing to be added will be the last to remove.
+
+//Where Stacks are Used
+//Managing function invocations
+//Undo/Redo
+//Routing(the history object) is treated like a stack!
+
+//ARRAY IMPLEMENTATION
+//use push and pop
+//or
+//unshift and shift (less efficient)
+//Stacks don't need indeces
+
+//Stack as a Singly Linked List
+//Add and Subtract from the front because it is constant time.
+
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.next = null;
+  }
+}
+
+class Stack {
+  constructor() {
+    this.first = null;
+    this.last = null;
+    this.size = 0;
+  }
+  push(val) {
+    var newNode = new Node(val);
+    if (!this.first) {
+      this.first = newNode;
+      this.last = newNode;
+    } else {
+      var temp = this.first;
+      this.first = newNode;
+      this.first.next = temp;
+    }
+    return ++this.size;
+  }
+
+  pop() {
+    if (!this.first) return null;
+    var temp = this.first;
+    if (this.first === this.last) {
+      this.last = null;
+    }
+    this.first = this.first.next;
+    this.size--;
+    return temp.value;
+  }
+}
+
+let newStack = new Stack();
+newStack.push('gary');
+newStack.push('randy');
+newStack.push('bobbie');
+newStack.push('george');
+/*
+BIG O of STACKS!
+Insertion - O(1)
+Removal - O(1)
+Searching- O(N) DOESN'T MATTER
+Access - O(N) DOESN'T MATTER
+*/
+
+/*
+RECAP
+-Stacks are a LIFO data structure where the last value in is always the first one out.
+-Stacks are used to handle function invocations (the call stack), for operations like undo/ redo, and for routing (remember pages you have visited and go back/forward) and much more!
+-They are not a built in data structure in JavaScript, but are relatively simple to implement
+*/
