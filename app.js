@@ -424,49 +424,49 @@
 //Stack as a Singly Linked List
 //Add and Subtract from the front because it is constant time.
 
-class Node {
-  constructor(value) {
-    this.value = value;
-    this.next = null;
-  }
-}
+// class Node {
+//   constructor(value) {
+//     this.value = value;
+//     this.next = null;
+//   }
+// }
 
-class Stack {
-  constructor() {
-    this.first = null;
-    this.last = null;
-    this.size = 0;
-  }
-  push(val) {
-    var newNode = new Node(val);
-    if (!this.first) {
-      this.first = newNode;
-      this.last = newNode;
-    } else {
-      var temp = this.first;
-      this.first = newNode;
-      this.first.next = temp;
-    }
-    return ++this.size;
-  }
+// class Stack {
+//   constructor() {
+//     this.first = null;
+//     this.last = null;
+//     this.size = 0;
+//   }
+//   push(val) {
+//     var newNode = new Node(val);
+//     if (!this.first) {
+//       this.first = newNode;
+//       this.last = newNode;
+//     } else {
+//       var temp = this.first;
+//       this.first = newNode;
+//       this.first.next = temp;
+//     }
+//     return ++this.size;
+//   }
 
-  pop() {
-    if (!this.first) return null;
-    var temp = this.first;
-    if (this.first === this.last) {
-      this.last = null;
-    }
-    this.first = this.first.next;
-    this.size--;
-    return temp.value;
-  }
-}
+//   pop() {
+//     if (!this.first) return null;
+//     var temp = this.first;
+//     if (this.first === this.last) {
+//       this.last = null;
+//     }
+//     this.first = this.first.next;
+//     this.size--;
+//     return temp.value;
+//   }
+// }
 
-let newStack = new Stack();
-newStack.push('gary');
-newStack.push('randy');
-newStack.push('bobbie');
-newStack.push('george');
+// let newStack = new Stack();
+// newStack.push('gary');
+// newStack.push('randy');
+// newStack.push('bobbie');
+// newStack.push('george');
 /*
 BIG O of STACKS!
 Insertion - O(1)
@@ -481,3 +481,59 @@ RECAP
 -Stacks are used to handle function invocations (the call stack), for operations like undo/ redo, and for routing (remember pages you have visited and go back/forward) and much more!
 -They are not a built in data structure in JavaScript, but are relatively simple to implement
 */
+
+/*
+Queues
+What is a Queue
+A FIFO data structure!
+First In First Out
+
+Queuees exist everywhere! Think about the last time you waited in line.
+How do we use them in programming?
+-Background tasks
+-Uploading resources
+-Printing/Task processing
+*/
+
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.next = null;
+  }
+}
+
+class Queue {
+  constructor() {
+    this.first = null;
+    this.last = null;
+    this.size = 0;
+  }
+  enqueue(val) {
+    var newNode = new Node(val);
+    if (!this.first) {
+      this.first = newNode;
+      this.last = newNode;
+    } else {
+      this.last.next = newNode;
+      this.last = newNode;
+    }
+    return ++this.size;
+  }
+
+  dequeue() {
+    if (!this.first) return null;
+    let temp = this.first;
+    if (this.first === this.last) {
+      this.last = null;
+    }
+    this.first = this.first.next;
+    this.size--;
+    return temp.value;
+  }
+}
+
+let q = new Queue();
+q.enqueue('FIRST');
+q.enqueue('SECOND');
+q.enqueue('THIRD');
+q.enqueue('FOURTH');
