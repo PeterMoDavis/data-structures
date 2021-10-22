@@ -404,3 +404,8 @@ list.push('TWELFTH');
 //Doubly Linked Lists are almost identical to Singly Linked Lists except there is an additional pointer to previous nodes
 //Better than Singly Linked Lists for finding nodes and cand be done in half the time.
 //However, they do take up more memory considering the extra pointer.
+
+//STACKS
+//A LIFO data structure !
+
+//The last element added to the stack will be the fist element removed from the stack.  the first thing to be added will be the last to remove.
