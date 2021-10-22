@@ -671,3 +671,12 @@ class BinarySearchTree {
 var tree = new BinarySearchTree();
 tree.insert(10);
 tree.insert(5);
+
+/*
+Big O of BST
+only Binry Search Trees!!!
+Insertion - O(log n)
+Searching - O(log n)
+
+not quaranteed!
+*/
