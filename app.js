@@ -571,3 +571,11 @@ Siblings-A group of nodes with the same parent.
 Leaf-A node with no children.
 Edge-the connection between one node an another.
 */
+
+//Trees - Different Applications
+//-HTML DOM
+//-Network Routing
+//-Abstract Syntax Tree
+//-Artificial Intelligence (Decision Tree)
+//-Folders are modeled in an operating system is a Tree.
+//-JSON- when you parse JSON it creates a tree structure.
