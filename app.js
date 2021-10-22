@@ -495,48 +495,48 @@ How do we use them in programming?
 -Printing/Task processing
 */
 
-class Node {
-  constructor(value) {
-    this.value = value;
-    this.next = null;
-  }
-}
+// class Node {
+//   constructor(value) {
+//     this.value = value;
+//     this.next = null;
+//   }
+// }
 
-class Queue {
-  constructor() {
-    this.first = null;
-    this.last = null;
-    this.size = 0;
-  }
-  enqueue(val) {
-    var newNode = new Node(val);
-    if (!this.first) {
-      this.first = newNode;
-      this.last = newNode;
-    } else {
-      this.last.next = newNode;
-      this.last = newNode;
-    }
-    return ++this.size;
-  }
+// class Queue {
+//   constructor() {
+//     this.first = null;
+//     this.last = null;
+//     this.size = 0;
+//   }
+//   enqueue(val) {
+//     var newNode = new Node(val);
+//     if (!this.first) {
+//       this.first = newNode;
+//       this.last = newNode;
+//     } else {
+//       this.last.next = newNode;
+//       this.last = newNode;
+//     }
+//     return ++this.size;
+//   }
 
-  dequeue() {
-    if (!this.first) return null;
-    let temp = this.first;
-    if (this.first === this.last) {
-      this.last = null;
-    }
-    this.first = this.first.next;
-    this.size--;
-    return temp.value;
-  }
-}
+//   dequeue() {
+//     if (!this.first) return null;
+//     let temp = this.first;
+//     if (this.first === this.last) {
+//       this.last = null;
+//     }
+//     this.first = this.first.next;
+//     this.size--;
+//     return temp.value;
+//   }
+// }
 
-let q = new Queue();
-q.enqueue('FIRST');
-q.enqueue('SECOND');
-q.enqueue('THIRD');
-q.enqueue('FOURTH');
+// let q = new Queue();
+// q.enqueue('FIRST');
+// q.enqueue('SECOND');
+// q.enqueue('THIRD');
+// q.enqueue('FOURTH');
 
 /* 
 BIG O of QUEUES
@@ -593,3 +593,23 @@ Edge-the connection between one node an another.
 //-Each node can have at most, TWO CHILDREN.
 //-Every node to the left of  a parent node is always elss than the parent.
 //-Every node to the right of a parent node is always greater than the parent.
+
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
+  }
+}
+
+class BinarySearchTree {
+  constructor() {
+    this.root = null;
+  }
+}
+
+var tree = new BinarySearchTree();
+tree.root = new Node(10);
+tree.root.right = new Node(15);
+tree.root.left = new Node(7);
+tree.root.left.right = new Node(9);
