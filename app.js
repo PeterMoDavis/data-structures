@@ -551,3 +551,23 @@ RECAP
 -Queues are useful for processing tasks and are foundational for mopre complex data structures
 -Insertion and Removal can be done in O(1)
 */
+
+//WHAT IS A TREE
+//A data structure that consists of nodes in a PARENT/CHILD relationship
+
+//LISTS - Linear
+//Trees - nonlinear
+//A linked list could be considered a specific kind of linear tree.
+//It is not a tree when branches reference other brandches that aren't their children.
+//Every node is moving down and away from the root node.
+//If there is more than one entry point or root node  it is not a tree.
+
+/*
+TREE TERMINOLOGY
+Root-The top node in a tree
+Child- A node directly connected to another node when moving away from the root.
+Parent-The converse notion of a child.
+Siblings-A group of nodes with the same parent.
+Leaf-A node with no children.
+Edge-the connection between one node an another.
+*/
