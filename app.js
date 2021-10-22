@@ -537,3 +537,17 @@ q.enqueue('FIRST');
 q.enqueue('SECOND');
 q.enqueue('THIRD');
 q.enqueue('FOURTH');
+
+/* 
+BIG O of QUEUES
+Insertion - O(1)
+Removal - O(1)
+Searching- O(N) DOESN'T MATTER
+Access- O(N) DOESN'T MATTER
+
+
+RECAP
+-Queues are a FIFO data structure, all elements are first in first out.
+-Queues are useful for processing tasks and are foundational for mopre complex data structures
+-Insertion and Removal can be done in O(1)
+*/
