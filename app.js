@@ -752,3 +752,17 @@ RECAP
 -Binary Search Trees are a more specific version of binary trees where every node to the left of a parent is less than it's value and every node to the ritght is greater. 
 -We can search through Trees using BFS and DFS. 
 */
+
+/*
+HEAPS
+(A CATEGORY OF TREES)
+WHAT IS A BINARY HEAP?
+Very similar to a binary search tree but with some different rules!
+In a MAX BINARY HEAP, parent nodes are always larger than child nodes.  In a MIN BINARY HEAP, parent nodes are alwasy smaller than child nodes.  Left and right doesn't matter.  
+
+MAX BINARY HEAP
+-Each parent has at most two child nodes.
+-The value of each parent node is always greater then it's child nodes.
+-In a max Binary Heap the parent is greater than the children, but there are no guarantees between sibling nodes.  
+-A binary heap is as compact as possible. All the children of each node are as full as they can be and left children are fillout out first.  
+*/
