@@ -736,3 +736,19 @@ Two ways;
 -Breadth-first Search (working across the tree horizontally)
 -Depth-first Search (Vertically Down)
 */
+
+/*
+WHICH IS BETTER
+BFS or DFS ?
+If the tree is huge the Breadth First queue will have to store tons of data in the queue.  Space Complexity could be a lot more.  
+
+Depth First uses less space.  Each piece of data is a frame in the call stack because of recursion. 
+
+Time Complexity is the same.  Wide trees take more space for Breadth First, Deep trees take more space for Depth First. 
+
+RECAP
+-Trees are non-linear data structures that contain a root and child nodes.
+-Binary Trees can have values of any type, but at most two children for each parent.
+-Binary Search Trees are a more specific version of binary trees where every node to the left of a parent is less than it's value and every node to the ritght is greater. 
+-We can search through Trees using BFS and DFS. 
+*/
