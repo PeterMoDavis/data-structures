@@ -680,3 +680,10 @@ Searching - O(log n)
 
 not quaranteed!
 */
+
+/*
+TRAVERSING A TREE
+Two ways;
+-Breadth-first Search (working across the tree horizontally)
+-Depth-first Search (Vertically Down)
+*/
