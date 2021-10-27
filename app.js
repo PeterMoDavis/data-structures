@@ -781,11 +781,11 @@ ADDING TO A MAZ BINARY HEAP
 
 class MaxBinaryHeap {
   constructor() {
-    this.values = [41, 39, 33, 18, 27, 12];
+    this.values = [];
   }
-  insert(val) {
-    this.values.push(val);
-    return this.bubbleUP();
+  insert(element) {
+    this.values.push(element);
+    this.bubbleUP();
   }
   bubbleUP() {
     let idx = this.values.length - 1;
@@ -800,7 +800,67 @@ class MaxBinaryHeap {
     }
     return this.values;
   }
+  extractMax() {
+    const max = this.values[0];
+    const end = this.values.pop();
+    if (this.values.length > 0) {
+      this.values[0] = end;
+
+      this.sinkDown();
+    }
+
+    return max;
+  }
+  sinkDown() {
+    let idx = 0;
+    const length = this.values.length;
+    const element = this.values[0];
+    while (true) {
+      let leftChildIdx = 2 * idx + 1;
+      let rightChildIdx = 2 * idx + 2;
+      let leftChild, rightChild;
+      let swap = null;
+
+      if (leftChildIdx < length) {
+        leftChild = this.values[leftChildIdx];
+        if (leftChild > element) {
+          swap = leftChildIdx;
+        }
+      }
+      if (rightChildIdx < length) {
+        rightChild = this.values[rightChildIdx];
+        if (
+          (swap === null && rightChild > element) ||
+          (swap !== null && rightChild > leftChild)
+        ) {
+          swap = rightChildIdx;
+        }
+      }
+      if (swap === null) break;
+      this.values[idx] = this.values[swap];
+      this.values[swap] = element;
+    }
+  }
 }
 
 let heap = new MaxBinaryHeap();
+heap.insert(41);
+heap.insert(39);
+heap.insert(33);
+heap.insert(18);
+heap.insert(27);
+heap.insert(12);
 heap.insert(55);
+console.log(heap.values);
+console.log(heap.extractMax());
+console.log(heap.values);
+
+/*
+REMOVING FROM A HEAP
+-Remove the root
+-Repladce with the most recently added
+-Adjust(sink down);
+
+SINK DOWN
+The procedure for deleiting the root from the heap (effectively extracting the maximum element in a max-heap or the minimum element in a min-heap) and restoring the properties is called down-heap(also known as bubble-down, percolate-down, sift-down, trickle down, heapify-dwon, cascade-down, and extract-min/max)
+*/
