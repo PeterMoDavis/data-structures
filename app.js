@@ -765,4 +765,42 @@ MAX BINARY HEAP
 -The value of each parent node is always greater then it's child nodes.
 -In a max Binary Heap the parent is greater than the children, but there are no guarantees between sibling nodes.  
 -A binary heap is as compact as possible. All the children of each node are as full as they can be and left children are fillout out first.  
+
+REPRESENTING HEAPS
+Could implement a Tree Class.  
+
+Can represent a heap with arrays:  
+
+children can be found by 2n + 1 for the Left Side and 2n + 2 for the right side n being the index in the array.  
+parents can be fount by n-1/2 floored.   
+
+ADDING TO A MAZ BINARY HEAP
+-Add to the end
+-Bubble up
 */
+
+class MaxBinaryHeap {
+  constructor() {
+    this.values = [41, 39, 33, 18, 27, 12];
+  }
+  insert(val) {
+    this.values.push(val);
+    return this.bubbleUP();
+  }
+  bubbleUP() {
+    let idx = this.values.length - 1;
+    const element = this.values[idx];
+    while (idx > 0) {
+      let parentIdx = Math.floor((idx - 1) / 2);
+      let parent = this.values[parentIdx];
+      if (element <= parent) break;
+      this.values[parentIdx] = element;
+      this.values[idx] = parent;
+      idx = parentIdx;
+    }
+    return this.values;
+  }
+}
+
+let heap = new MaxBinaryHeap();
+heap.insert(55);
