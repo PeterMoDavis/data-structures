@@ -957,3 +957,24 @@ Binary Heaps are very useful data structures for sorting, and implementing other
 -Binary Heaps are filled out from left to right, every node is filled.
 -With just a little bit of math we can represent heaps using arrays.  
 */
+
+/*
+HASH TABLES
+WHAT IS A HASH TABLE? 
+Hash tables are used to store key-value pairs.
+They are like arrays, but the keys are not ordered.
+Unlike arrays, hash tables are fast for all the following operations: finding values, adding new values, and removing values!
+
+Nearly every programming language has some sort of hash table data structure 
+
+Because of their speed, hash tables are very commonly used!
+
+HASH TABLES IN THE WILD
+
+Python has Dictionaries
+JS has Objects and Maps
+Java, GO and Scala have Maps
+Ruby has... Hashes
+
+*Objects have some restrictions, but are basically hash tables.  
+*/
