@@ -949,4 +949,11 @@ ER.enqueue('glass in foot', 3);
 /*
 Big O of Binary Heaps
 LOG(N)
+
+RECAP 
+-Binary Heap which is a type of a heap which is a type of tree.
+Binary Heaps are very useful data structures for sorting, and implementing other data structures like priority queues.  
+-Binary Heaps are either Max Binary Heaps or Min binary Heaps with parents either being smaller or larger than children.
+-Binary Heaps are filled out from left to right, every node is filled.
+-With just a little bit of math we can represent heaps using arrays.  
 */
