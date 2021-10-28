@@ -976,5 +976,46 @@ JS has Objects and Maps
 Java, GO and Scala have Maps
 Ruby has... Hashes
 
-*Objects have some restrictions, but are basically hash tables.  
+*Objects have some restrictions, but are basically hash tables. 
+
+The Hash Part
+To implement a hash table, we'll be using an array.
+In order to look up values by key, we need a way to convert keys into valid arrray indices.  
+A function that performs this task is called a hash function.
+
+WHAT MAKES A GOOD HASH? 
+(not a cryptographically secure one)
+
+1. Fast(i.e. constant time)
+2. Doesn't clust er outputs at specific indices, but distributes uniformly
+3. Deterministic (same input yields same output)
+
+PRIME NUMBERS? WUT.
+
+The prime number in the hash is helpful in spreading out the keys more uniformly.
+
+It's also helpful if the array that you're putting values into has a  prime length;
+
+You don't need to know why.  (Math is complicated!)
+But here are some links if your curious.  
+
+Dealing with Collisions
+
+Even with a large array and a great hash function, collisions are inevitable.
+
+There are many strategies for dealing with collisions, but we'll focus on two:
+
+1. Separate Chaining  - stroing values at the same index with a nested data structure.
+2. Linear Probing - if the index already has a value go past it and search of the next empty index.  
+
 */
+
+function hash(key, arrayLen) {
+  let total = 0;
+  let WEIRD_PRIME = 31;
+  for (let i = 0; i < Math.min(key.length, 100); i++) {
+    let char = key[i];
+    let value = char.charCodeAt(0) - 96;
+    total = (total * WEIRD_PRIME + value) % arrayLen;
+  }
+}
