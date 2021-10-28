@@ -611,115 +611,115 @@ Steps- Iteratively of Recursively
 -If there is not, add that node as the left property.  
 */
 
-class Node {
-  constructor(value) {
-    this.value = value;
-    this.left = null;
-    this.right = null;
-  }
-}
+// class Node {
+//   constructor(value) {
+//     this.value = value;
+//     this.left = null;
+//     this.right = null;
+//   }
+// }
 
-class BinarySearchTree {
-  constructor() {
-    this.root = null;
-  }
-  insert(value) {
-    var newNode = new Node(value);
-    if (this.root === null) {
-      this.root = newNode;
-      return this;
-    } else {
-      var current = this.root;
-      while (true) {
-        if (value === current.value) return undefined;
-        if (value < current.value) {
-          if (current.left === null) {
-            current.left = newNode;
-            return this;
-          } else {
-            current = current.left;
-          }
-        } else if (value > current.value) {
-          if (current.right === null) {
-            current.right = newNode;
-            return this;
-          } else {
-            current = current.right;
-          }
-        }
-      }
-    }
-  }
-  contains(value) {
-    if (this.root === null) return false;
-    let current = this.root,
-      found = false;
-    while (current && !found) {
-      if (value < current.value) {
-        current = current.left;
-      } else if (value > current.value) {
-        current = current.right;
-      } else {
-        return true;
-      }
-    }
+// class BinarySearchTree {
+//   constructor() {
+//     this.root = null;
+//   }
+//   insert(value) {
+//     var newNode = new Node(value);
+//     if (this.root === null) {
+//       this.root = newNode;
+//       return this;
+//     } else {
+//       var current = this.root;
+//       while (true) {
+//         if (value === current.value) return undefined;
+//         if (value < current.value) {
+//           if (current.left === null) {
+//             current.left = newNode;
+//             return this;
+//           } else {
+//             current = current.left;
+//           }
+//         } else if (value > current.value) {
+//           if (current.right === null) {
+//             current.right = newNode;
+//             return this;
+//           } else {
+//             current = current.right;
+//           }
+//         }
+//       }
+//     }
+//   }
+//   contains(value) {
+//     if (this.root === null) return false;
+//     let current = this.root,
+//       found = false;
+//     while (current && !found) {
+//       if (value < current.value) {
+//         current = current.left;
+//       } else if (value > current.value) {
+//         current = current.right;
+//       } else {
+//         return true;
+//       }
+//     }
 
-    return false;
-  }
-  BFS() {
-    let node = this.root,
-      data = [],
-      queue = [];
+//     return false;
+//   }
+//   BFS() {
+//     let node = this.root,
+//       data = [],
+//       queue = [];
 
-    queue.push(this.root);
-    while (queue.length) {
-      node = queue.shift();
-      data.push(node.value);
-      if (node.left) queue.push(node.left);
-      if (node.right) queue.push(node.right);
-    }
-    return data;
-  }
+//     queue.push(this.root);
+//     while (queue.length) {
+//       node = queue.shift();
+//       data.push(node.value);
+//       if (node.left) queue.push(node.left);
+//       if (node.right) queue.push(node.right);
+//     }
+//     return data;
+//   }
 
-  DFSPreOrder() {
-    var data = [];
-    function traverse(node) {
-      data.push(node.value);
-      if (node.left) traverse(node.left);
-      if (node.right) traverse(node.right);
-    }
-    traverse(this.root);
-    return data;
-  }
-  DFSPostOrder() {
-    var data = [];
-    function traverse(node) {
-      if (node.left) traverse(node.left);
-      if (node.right) traverse(node.right);
-      data.push(node.value);
-    }
-    traverse(this.root);
-    return data;
-  }
-  DFSInOrder() {
-    var data = [];
-    function traverse(node) {
-      if (node.left) traverse(node.left);
-      data.push(node.value);
-      if (node.right) traverse(node.right);
-    }
-    traverse(this.root);
-    return data;
-  }
-}
+//   DFSPreOrder() {
+//     var data = [];
+//     function traverse(node) {
+//       data.push(node.value);
+//       if (node.left) traverse(node.left);
+//       if (node.right) traverse(node.right);
+//     }
+//     traverse(this.root);
+//     return data;
+//   }
+//   DFSPostOrder() {
+//     var data = [];
+//     function traverse(node) {
+//       if (node.left) traverse(node.left);
+//       if (node.right) traverse(node.right);
+//       data.push(node.value);
+//     }
+//     traverse(this.root);
+//     return data;
+//   }
+//   DFSInOrder() {
+//     var data = [];
+//     function traverse(node) {
+//       if (node.left) traverse(node.left);
+//       data.push(node.value);
+//       if (node.right) traverse(node.right);
+//     }
+//     traverse(this.root);
+//     return data;
+//   }
+// }
 
-var tree = new BinarySearchTree();
-tree.insert(10);
-tree.insert(6);
-tree.insert(15);
-tree.insert(3);
-tree.insert(8);
-tree.insert(20);
+// var tree = new BinarySearchTree();
+// tree.insert(10);
+// tree.insert(6);
+// tree.insert(15);
+// tree.insert(3);
+// tree.insert(8);
+// tree.insert(20);
 
 /*
 Big O of BST
@@ -863,4 +863,90 @@ REMOVING FROM A HEAP
 
 SINK DOWN
 The procedure for deleiting the root from the heap (effectively extracting the maximum element in a max-heap or the minimum element in a min-heap) and restoring the properties is called down-heap(also known as bubble-down, percolate-down, sift-down, trickle down, heapify-dwon, cascade-down, and extract-min/max)
+
+WHAT IS A PRIORITY QUEUE?
+A data structure where each element has a priority. Elements with higher priorities are served before elements with lower priorities.  
+Priority Queues have nothing to do with Heaps.  They are abstract concepts.  Commonly done with a heap.  
+*/
+class Node {
+  constructor(val, priority) {
+    this.val = val;
+    this.priority = priority;
+  }
+}
+class PriorityQueue {
+  constructor() {
+    this.values = [];
+  }
+  enqueue(val, priority) {
+    let newNode = new Node(val, priority);
+    this.values.push(newNode);
+    this.bubbleUP();
+  }
+  bubbleUP() {
+    let idx = this.values.length - 1;
+    const element = this.values[idx];
+    while (idx > 0) {
+      let parentIdx = Math.floor((idx - 1) / 2);
+      let parent = this.values[parentIdx];
+      if (element.priority >= parent.priority) break;
+      this.values[parentIdx] = element;
+      this.values[idx] = parent;
+      idx = parentIdx;
+    }
+    return this.values;
+  }
+  dequeue() {
+    const min = this.values[0];
+    const end = this.values.pop();
+    if (this.values.length > 0) {
+      this.values[0] = end;
+      this.sinkDown();
+    }
+
+    return min;
+  }
+  sinkDown() {
+    let idx = 0;
+    const length = this.values.length;
+    const element = this.values[0];
+    while (true) {
+      let leftChildIdx = 2 * idx + 1;
+      let rightChildIdx = 2 * idx + 2;
+      let leftChild, rightChild;
+      let swap = null;
+
+      if (leftChildIdx < length) {
+        leftChild = this.values[leftChildIdx];
+        if (leftChild.priority < element.priority) {
+          swap = leftChildIdx;
+        }
+      }
+      if (rightChildIdx < length) {
+        rightChild = this.values[rightChildIdx];
+        if (
+          (swap === null && rightChild.priority < element.priority) ||
+          (swap !== null && rightChild.priority < leftChild.priority)
+        ) {
+          swap = rightChildIdx;
+        }
+      }
+      if (swap === null) break;
+      this.values[idx] = this.values[swap];
+      this.values[swap] = element;
+    }
+  }
+}
+
+let ER = new PriorityQueue();
+
+ER.enqueue('common cold', 5);
+ER.enqueue('gunshot wound', 1);
+ER.enqueue('high fever', 4);
+ER.enqueue('broken arm', 2);
+ER.enqueue('glass in foot', 3);
+
+/*
+Big O of Binary Heaps
+LOG(N)
 */
