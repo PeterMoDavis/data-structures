@@ -1008,6 +1008,18 @@ There are many strategies for dealing with collisions, but we'll focus on two:
 1. Separate Chaining  - stroing values at the same index with a nested data structure.
 2. Linear Probing - if the index already has a value go past it and search of the next empty index.  
 
+Set/Get
+
+set
+1.Accepts a key and a value
+2.Hashes the key
+3. Stores the key value pair in the hash table array via separate chaining.
+
+get
+1.Accepts a key
+2. Hashes the key
+3. Retrieve3s the key-value pair in the hash table
+4. If the key isn't found, returns undefined.
 */
 
 function hash(key, arrayLen) {
@@ -1019,3 +1031,38 @@ function hash(key, arrayLen) {
     total = (total * WEIRD_PRIME + value) % arrayLen;
   }
 }
+
+class HashTable {
+  constructor(size = 53) {
+    this.keyMap = new Array(size);
+  }
+
+  _hash(key) {
+    let total = 0;
+    let WEIRD_PRIME = 31;
+    for (let i = 0; i < Math.min(key.length, 100); i++) {
+      let char = key[i];
+      let value = char.charCodeAt(0) - 96;
+      total = (total * WEIRD_PRIME + value) % this.keyMap.length;
+    }
+    return total;
+  }
+  set(key, value) {
+    let index = this._hash(key);
+    if (!this.keyMap[index]) {
+      this.keyMap[index] = [];
+    }
+    this.keyMap[index].push([key, value]);
+  }
+  get(key) {}
+}
+
+let ht = new HashTable(17);
+ht.set('maroon', '#800000');
+ht.set('yellow', '#FFFF00');
+ht.set('olive', '#808000');
+ht.set('salmon', '#FA8072');
+ht.set('lightcoral', '#F08080');
+ht.set('mediumvioletred', '#C71585');
+ht.set('plum', '#DDA0DD');
+console.log(ht.keyMap);
