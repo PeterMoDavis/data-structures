@@ -1164,4 +1164,26 @@ WEIGHTED GRAPH
 Assigning values to the edge.
 For instance in google maps edges are weighted to see the shortest distance.  
 Picture a one way street would mean a directed graph.   
+
+REPRESENTING A GRAPH
+Two standard approaches on how to represent graph
+-Adjacency Matrix
+-Adjacency List
+
+ADJACENCY LIST
+-Can take up less space (in sparse graphs).
+-Faster to iterate over all edges
+-Can be slower to look up specific edge
+
+Adjacency Matrix
+-Takes up more space (in sparse graphs).
+-Slower to iterate over all edges
+-Faster to look up specific edge
+
+WHAT WILL WE USE
+
+An Adjacency List
+
+Why? 
+Most data in the real-world tends to lend itself to sparser and/or larger graphs.  
 */
