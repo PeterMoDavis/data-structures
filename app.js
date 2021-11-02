@@ -1104,3 +1104,22 @@ ht.set('plum', '#DDA0DD');
 ht.set('purple', '#DDA0DD');
 ht.set('violet', '#DDA0DD');
 console.log(ht.keyMap);
+
+/* 
+BIG O OF HASH TABLES
+(average case)
+
+-Insert O(1);
+-Deletion O(1);
+-Acess O(1)
+
+RECAP 
+
+-hash tables are collections of key-value pairs
+-hash tables can find values quickly given a key
+-hash tables can add new key-values quickly
+-hash tables store data in a large array, and work by hashing the keys 
+-a god hash should be fast, distribute keys uniformly,
+and be deterministic
+Separate chaining and linear probing are two strategis used to deal with two keys that hash to the same index
+*/
