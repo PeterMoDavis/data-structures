@@ -1186,4 +1186,25 @@ An Adjacency List
 
 Why? 
 Most data in the real-world tends to lend itself to sparser and/or larger graphs.  
+
+
+WE ARE BUILDING AN UNDIRECTED GRAPH
 */
+
+class Graph {
+  constructor() {
+    this.adjacencyList = {};
+  }
+  addVertex(vertex) {
+    if (!this.adjacencyList[vertex]) this.adjacencyList[vertex] = [];
+  }
+  addEdge(v1, v2) {
+    this.adjacencyList[v1].push(v2);
+    this.adjacencyList[v2].push(v1);
+  }
+}
+
+let bigDog = new Graph();
+bigDog.addVertex('yuki');
+bigDog.addVertex('bobby');
+console.log(bigDog.adjacencyList);
