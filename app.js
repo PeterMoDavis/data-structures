@@ -1114,7 +1114,6 @@ BIG O OF HASH TABLES
 -Acess O(1)
 
 RECAP 
-
 -hash tables are collections of key-value pairs
 -hash tables can find values quickly given a key
 -hash tables can add new key-values quickly
@@ -1122,4 +1121,47 @@ RECAP
 -a god hash should be fast, distribute keys uniformly,
 and be deterministic
 Separate chaining and linear probing are two strategis used to deal with two keys that hash to the same index
+*/
+
+/* 
+WHAT ARE GRAPHS
+A graph data structure consists of a finite (and possible mutable) set of vertices or nodes or points, together with a set of unordered pairs of these vertices for an undirected graph or a set of ordered pairs for a  directed graph.  
+
+(a collection of NODES  and CONNECTIONS)
+
+
+USES FOR GRAPHS
+
+-Social Networks
+-Location/Mapping
+-Routing Algorithms
+-Visual Hierarchy
+-File System Optimaztions
+-Everywhere!
+
+RECOMMENDATIONS
+-"People also watched"
+-"You might also like..."
+"People you might know"
+-"Frequently bought with"
+
+TYPES OF GRAPHS
+
+ESSENTIAL GRAPH TERMS
+-Vertix - a node
+-Edge - connection between nodes
+- Weighted/Unweighted - values assigned to distances between vertices
+
+A tree is an undirected graph in which any two vertices are connected by exactly one path.
+
+UNDIRECTED GRAPH
+There is no direction or polarity to the edges.  A and B are a connection but so are B to A.  
+
+DIRECTED GRAPH 
+Often represented with arrows.  A and b are a connection but b to a may not be.  
+
+WEIGHTED GRAPH
+Assigning values to the edge.
+For instance in google maps edges are weighted to see the shortest distance.  
+Picture a one way street would mean a directed graph.   
 */
