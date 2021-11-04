@@ -1454,4 +1454,16 @@ THE APPROACH
 2. Once we've moved to the node we're going to visit, we look at each of it's neighbors.
 3. For each neighboring node, we calculate the distance by summing the total edges that lead to the node we're checking from the starting node.
 4. If the new total distance to a node is less than the previous total, we store the new shorter distance for that node. 
+
+DYNAMIC PROGRAMMING
+A method for solving a complex problem by breaking it down into a collection of simpler subproblems, solving each of those subproblems just once, and storing their solutions.
+
+It only works on problems with optimal substructure & overlapping subproblems.
+
+OVERLAPPING SUBPROBLEMS
+A problem is said to have overlapping subproblems if it can be broken down into subproblems which are reused several times.
+
+OPTIMAL SUBSTRUCTURE
+A problem is said to have optimal substructure if an optimal solution can be constructed from optimal solutions of its subproblems
+
 */
