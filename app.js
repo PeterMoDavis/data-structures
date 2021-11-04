@@ -1210,6 +1210,10 @@ matches/recommendations
     DEPTH FIRST TRAVERSAL
 
     There is no root node as there is in a tree.  
+
+    BREADTH FIRST TRAVERSAL
+  Vistit neightbors at current depth first!
+
 */
 
 class Graph {
@@ -1255,6 +1259,45 @@ class Graph {
     })(start);
     return result;
   }
+  depthFirstIterative(start) {
+    const stack = [start];
+    const result = [];
+    const visited = {};
+    let currentVertex;
+
+    visited[start] = true;
+    while (stack.length) {
+      currentVertex = stack.pop();
+      result.push(currentVertex);
+
+      this.adjacencyList[currentVertex].forEach((neighbor) => {
+        if (!visited[neighbor]) {
+          visited[neighbor] = true;
+          stack.push(neighbor);
+        }
+      });
+    }
+    return result;
+  }
+  breadthFirst(start) {
+    const queue = [start];
+    const result = [];
+    const visited = {};
+    let currentVertex;
+
+    while (queue.length) {
+      currentVertex = queue.shift();
+      result.push(currentVertex);
+
+      this.adjacencyList[currentVertex].forEach((neighbor) => {
+        if (!vsited[neighbor]) {
+          visited[neighbor] = true;
+          queue.push(neighbor);
+        }
+      });
+    }
+    return result;
+  }
 }
 
 let g = new Graph();
@@ -1273,6 +1316,7 @@ g.addEdge('D', 'E');
 g.addEdge('D', 'F');
 g.addEdge('E', 'F');
 console.log(g.depthFirstRecursive('A'));
+console.log(g.depthFirstIterative('A'));
 
 //          A
 //        /   \
@@ -1281,3 +1325,39 @@ console.log(g.depthFirstRecursive('A'));
 //       D --- E
 //        \   /
 //          F
+
+/* 
+Dijkstras's Shortes Path Algorithm
+
+WHAT IS IT
+One of the most famous and widely used algorighms around.
+Finds the shortest path between two vertices on a graph.
+Whats the fastes way to get from point A to point B?
+
+WHO WAS HE? 
+
+Edsger Dijkstra was a Dutch programmer, physicist, essayis, and all around smarty-pants
+He helped to advance the field of computer science from an "art" to an academic discipline
+Many of his discoveries and algorithims are still commonly used to this day.
+
+WHY IS IT USEFUL?
+-GPS - finding fastest route
+-Network Routing - finds open shortest path for data
+-Biology - used to model the spread of viruses among humans
+-Airline Tickets - finding cheapest route to your destination
+-Biology - used to model the spread of viruses among humnans
+-Many other uses!
+*/
+
+class WeightedGraph {
+  constructor() {
+    this.adjacencyList = {};
+  }
+  addVertex(vertex) {
+    if (!this.adjacencyList[vertex]) this.adjacencyList[vertex] = [];
+  }
+  addEdge(vertex1, vertex2, weight) {
+    this.adjacencyList[vertex1].push({ node: vertex2, weight });
+    this.adjacencyList[vertex2].push({ node: vertex1, weight });
+  }
+}
