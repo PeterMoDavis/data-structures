@@ -779,172 +779,172 @@ ADDING TO A MAZ BINARY HEAP
 -Bubble up
 */
 
-class MaxBinaryHeap {
-  constructor() {
-    this.values = [];
-  }
-  insert(element) {
-    this.values.push(element);
-    this.bubbleUP();
-  }
-  bubbleUP() {
-    let idx = this.values.length - 1;
-    const element = this.values[idx];
-    while (idx > 0) {
-      let parentIdx = Math.floor((idx - 1) / 2);
-      let parent = this.values[parentIdx];
-      if (element <= parent) break;
-      this.values[parentIdx] = element;
-      this.values[idx] = parent;
-      idx = parentIdx;
-    }
-    return this.values;
-  }
-  extractMax() {
-    const max = this.values[0];
-    const end = this.values.pop();
-    if (this.values.length > 0) {
-      this.values[0] = end;
+// class MaxBinaryHeap {
+//   constructor() {
+//     this.values = [];
+//   }
+//   insert(element) {
+//     this.values.push(element);
+//     this.bubbleUP();
+//   }
+//   bubbleUP() {
+//     let idx = this.values.length - 1;
+//     const element = this.values[idx];
+//     while (idx > 0) {
+//       let parentIdx = Math.floor((idx - 1) / 2);
+//       let parent = this.values[parentIdx];
+//       if (element <= parent) break;
+//       this.values[parentIdx] = element;
+//       this.values[idx] = parent;
+//       idx = parentIdx;
+//     }
+//     return this.values;
+//   }
+//   extractMax() {
+//     const max = this.values[0];
+//     const end = this.values.pop();
+//     if (this.values.length > 0) {
+//       this.values[0] = end;
 
-      this.sinkDown();
-    }
+//       this.sinkDown();
+//     }
 
-    return max;
-  }
-  sinkDown() {
-    let idx = 0;
-    const length = this.values.length;
-    const element = this.values[0];
-    while (true) {
-      let leftChildIdx = 2 * idx + 1;
-      let rightChildIdx = 2 * idx + 2;
-      let leftChild, rightChild;
-      let swap = null;
+//     return max;
+//   }
+//   sinkDown() {
+//     let idx = 0;
+//     const length = this.values.length;
+//     const element = this.values[0];
+//     while (true) {
+//       let leftChildIdx = 2 * idx + 1;
+//       let rightChildIdx = 2 * idx + 2;
+//       let leftChild, rightChild;
+//       let swap = null;
 
-      if (leftChildIdx < length) {
-        leftChild = this.values[leftChildIdx];
-        if (leftChild > element) {
-          swap = leftChildIdx;
-        }
-      }
-      if (rightChildIdx < length) {
-        rightChild = this.values[rightChildIdx];
-        if (
-          (swap === null && rightChild > element) ||
-          (swap !== null && rightChild > leftChild)
-        ) {
-          swap = rightChildIdx;
-        }
-      }
-      if (swap === null) break;
-      this.values[idx] = this.values[swap];
-      this.values[swap] = element;
-    }
-  }
-}
+//       if (leftChildIdx < length) {
+//         leftChild = this.values[leftChildIdx];
+//         if (leftChild > element) {
+//           swap = leftChildIdx;
+//         }
+//       }
+//       if (rightChildIdx < length) {
+//         rightChild = this.values[rightChildIdx];
+//         if (
+//           (swap === null && rightChild > element) ||
+//           (swap !== null && rightChild > leftChild)
+//         ) {
+//           swap = rightChildIdx;
+//         }
+//       }
+//       if (swap === null) break;
+//       this.values[idx] = this.values[swap];
+//       this.values[swap] = element;
+//     }
+//   }
+// }
 
-let heap = new MaxBinaryHeap();
-heap.insert(41);
-heap.insert(39);
-heap.insert(33);
-heap.insert(18);
-heap.insert(27);
-heap.insert(12);
-heap.insert(55);
-console.log(heap.values);
-console.log(heap.extractMax());
-console.log(heap.values);
+// let heap = new MaxBinaryHeap();
+// heap.insert(41);
+// heap.insert(39);
+// heap.insert(33);
+// heap.insert(18);
+// heap.insert(27);
+// heap.insert(12);
+// heap.insert(55);
+// console.log(heap.values);
+// console.log(heap.extractMax());
+// console.log(heap.values);
 
-/*
-REMOVING FROM A HEAP
--Remove the root
--Repladce with the most recently added
--Adjust(sink down);
+// /*
+// REMOVING FROM A HEAP
+// -Remove the root
+// -Repladce with the most recently added
+// -Adjust(sink down);
 
-SINK DOWN
-The procedure for deleiting the root from the heap (effectively extracting the maximum element in a max-heap or the minimum element in a min-heap) and restoring the properties is called down-heap(also known as bubble-down, percolate-down, sift-down, trickle down, heapify-dwon, cascade-down, and extract-min/max)
+// SINK DOWN
+// The procedure for deleiting the root from the heap (effectively extracting the maximum element in a max-heap or the minimum element in a min-heap) and restoring the properties is called down-heap(also known as bubble-down, percolate-down, sift-down, trickle down, heapify-dwon, cascade-down, and extract-min/max)
 
-WHAT IS A PRIORITY QUEUE?
-A data structure where each element has a priority. Elements with higher priorities are served before elements with lower priorities.  
-Priority Queues have nothing to do with Heaps.  They are abstract concepts.  Commonly done with a heap.  
-*/
-class Node {
-  constructor(val, priority) {
-    this.val = val;
-    this.priority = priority;
-  }
-}
-class PriorityQueue {
-  constructor() {
-    this.values = [];
-  }
-  enqueue(val, priority) {
-    let newNode = new Node(val, priority);
-    this.values.push(newNode);
-    this.bubbleUP();
-  }
-  bubbleUP() {
-    let idx = this.values.length - 1;
-    const element = this.values[idx];
-    while (idx > 0) {
-      let parentIdx = Math.floor((idx - 1) / 2);
-      let parent = this.values[parentIdx];
-      if (element.priority >= parent.priority) break;
-      this.values[parentIdx] = element;
-      this.values[idx] = parent;
-      idx = parentIdx;
-    }
-    return this.values;
-  }
-  dequeue() {
-    const min = this.values[0];
-    const end = this.values.pop();
-    if (this.values.length > 0) {
-      this.values[0] = end;
-      this.sinkDown();
-    }
+// WHAT IS A PRIORITY QUEUE?
+// A data structure where each element has a priority. Elements with higher priorities are served before elements with lower priorities.
+// Priority Queues have nothing to do with Heaps.  They are abstract concepts.  Commonly done with a heap.
+// */
+// class Node {
+//   constructor(val, priority) {
+//     this.val = val;
+//     this.priority = priority;
+//   }
+// }
+// class PriorityQueue {
+//   constructor() {
+//     this.values = [];
+//   }
+//   enqueue(val, priority) {
+//     let newNode = new Node(val, priority);
+//     this.values.push(newNode);
+//     this.bubbleUP();
+//   }
+//   bubbleUP() {
+//     let idx = this.values.length - 1;
+//     const element = this.values[idx];
+//     while (idx > 0) {
+//       let parentIdx = Math.floor((idx - 1) / 2);
+//       let parent = this.values[parentIdx];
+//       if (element.priority >= parent.priority) break;
+//       this.values[parentIdx] = element;
+//       this.values[idx] = parent;
+//       idx = parentIdx;
+//     }
+//     return this.values;
+//   }
+//   dequeue() {
+//     const min = this.values[0];
+//     const end = this.values.pop();
+//     if (this.values.length > 0) {
+//       this.values[0] = end;
+//       this.sinkDown();
+//     }
 
-    return min;
-  }
-  sinkDown() {
-    let idx = 0;
-    const length = this.values.length;
-    const element = this.values[0];
-    while (true) {
-      let leftChildIdx = 2 * idx + 1;
-      let rightChildIdx = 2 * idx + 2;
-      let leftChild, rightChild;
-      let swap = null;
+//     return min;
+//   }
+//   sinkDown() {
+//     let idx = 0;
+//     const length = this.values.length;
+//     const element = this.values[0];
+//     while (true) {
+//       let leftChildIdx = 2 * idx + 1;
+//       let rightChildIdx = 2 * idx + 2;
+//       let leftChild, rightChild;
+//       let swap = null;
 
-      if (leftChildIdx < length) {
-        leftChild = this.values[leftChildIdx];
-        if (leftChild.priority < element.priority) {
-          swap = leftChildIdx;
-        }
-      }
-      if (rightChildIdx < length) {
-        rightChild = this.values[rightChildIdx];
-        if (
-          (swap === null && rightChild.priority < element.priority) ||
-          (swap !== null && rightChild.priority < leftChild.priority)
-        ) {
-          swap = rightChildIdx;
-        }
-      }
-      if (swap === null) break;
-      this.values[idx] = this.values[swap];
-      this.values[swap] = element;
-    }
-  }
-}
+//       if (leftChildIdx < length) {
+//         leftChild = this.values[leftChildIdx];
+//         if (leftChild.priority < element.priority) {
+//           swap = leftChildIdx;
+//         }
+//       }
+//       if (rightChildIdx < length) {
+//         rightChild = this.values[rightChildIdx];
+//         if (
+//           (swap === null && rightChild.priority < element.priority) ||
+//           (swap !== null && rightChild.priority < leftChild.priority)
+//         ) {
+//           swap = rightChildIdx;
+//         }
+//       }
+//       if (swap === null) break;
+//       this.values[idx] = this.values[swap];
+//       this.values[swap] = element;
+//     }
+//   }
+// }
 
-let ER = new PriorityQueue();
+// let ER = new PriorityQueue();
 
-ER.enqueue('common cold', 5);
-ER.enqueue('gunshot wound', 1);
-ER.enqueue('high fever', 4);
-ER.enqueue('broken arm', 2);
-ER.enqueue('glass in foot', 3);
+// ER.enqueue('common cold', 5);
+// ER.enqueue('gunshot wound', 1);
+// ER.enqueue('high fever', 4);
+// ER.enqueue('broken arm', 2);
+// ER.enqueue('glass in foot', 3);
 
 /*
 Big O of Binary Heaps
@@ -1349,19 +1349,6 @@ WHY IS IT USEFUL?
 -Many other uses!
 */
 
-class WeightedGraph {
-  constructor() {
-    this.adjacencyList = {};
-  }
-  addVertex(vertex) {
-    if (!this.adjacencyList[vertex]) this.adjacencyList[vertex] = [];
-  }
-  addEdge(vertex1, vertex2, weight) {
-    this.adjacencyList[vertex1].push({ node: vertex2, weight });
-    this.adjacencyList[vertex2].push({ node: vertex1, weight });
-  }
-}
-
 class PriorityQueue {
   constructor() {
     this.values = [];
@@ -1377,6 +1364,89 @@ class PriorityQueue {
     this.values.sort((a, b) => a.priority - b.priority);
   }
 }
+
+class WeightedGraph {
+  constructor() {
+    this.adjacencyList = {};
+  }
+  addVertex(vertex) {
+    if (!this.adjacencyList[vertex]) this.adjacencyList[vertex] = [];
+  }
+  addEdge(vertex1, vertex2, weight) {
+    this.adjacencyList[vertex1].push({ node: vertex2, weight });
+    this.adjacencyList[vertex2].push({ node: vertex1, weight });
+  }
+  Dijkstra(start, finish) {
+    const nodes = new PriorityQueue();
+    const distances = {};
+    const previous = {};
+    let path = []; //to return at end
+    let smallest;
+    //build up initial state
+    for (let vertex in this.adjacencyList) {
+      if (vertex === start) {
+        distances[vertex] = 0;
+        nodes.enqueue(vertex, 0);
+      } else {
+        distances[vertex] = Infinity;
+        nodes.enqueue(vertex, Infinity);
+      }
+      previous[vertex] = null;
+    }
+    // as long as there is something to visit
+    while (nodes.values.length) {
+      smallest = nodes.dequeue().val;
+      if (smallest === finish) {
+        //WE ARE DONE
+        //BUILD UP PATH TO RETURN AT END
+        while (previous[smallest]) {
+          path.push(smallest);
+          smallest = previous[smallest];
+        }
+        break;
+      }
+      if (smallest || distances[smallest] !== Infinity) {
+        for (let neighbor in this.adjacencyList[smallest]) {
+          //find neighboring node
+          let nextNode = this.adjacencyList[smallest][neighbor];
+          //calculate new distance to neighboring node
+          let candidate = distances[smallest] + nextNode.weight;
+          let nextNeighbor = nextNode.node;
+          if (candidate < distances[nextNeighbor]) {
+            //updating new smallest distance to neighbor
+            distances[nextNeighbor] = candidate;
+            //updating previous - How we got to neighbor
+            previous[nextNeighbor] = smallest;
+            //enqueue in priority queue with new priority
+            nodes.enqueue(nextNeighbor, candidate);
+          }
+        }
+      }
+    }
+    return path.concat(smallest).reverse();
+  }
+}
+
+var graph = new WeightedGraph();
+graph.addVertex('A');
+graph.addVertex('B');
+graph.addVertex('C');
+graph.addVertex('D');
+graph.addVertex('E');
+graph.addVertex('F');
+
+graph.addEdge('A', 'B', 4);
+graph.addEdge('A', 'C', 2);
+graph.addEdge('B', 'E', 3);
+graph.addEdge('C', 'D', 2);
+graph.addEdge('C', 'F', 4);
+graph.addEdge('D', 'E', 3);
+graph.addEdge('D', 'F', 1);
+graph.addEdge('E', 'F', 1);
+
+graph.Dijkstra('A', 'E');
+
+// ["A", "C", "D", "F", "E"]
 
 /* 
 THE APPROACH
