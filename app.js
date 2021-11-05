@@ -1467,3 +1467,20 @@ OPTIMAL SUBSTRUCTURE
 A problem is said to have optimal substructure if an optimal solution can be constructed from optimal solutions of its subproblems
 
 */
+
+function fib(n) {
+  if (n <= 2) return 1;
+  return fib(n - 1) + fib(n - 2);
+}
+
+/* 
+Big O of ^ fib function
+O(2^n)
+
+What can we improve
+We're repeating things!
+Using past knowledge to make a future problem easier.  
+
+MEMOIZATION
+Storing the results of expensive function calls and returning the cached result when the same inputs occur again
+*/
