@@ -1555,3 +1555,18 @@ function quickSort(arr, left = 0, right = arr.length - 1) {
   }
   return arr;
 }
+
+/* 
+COMPARISON SORTS 
+Average Time Complexity
+-Bubble sort - O(n^2)
+-Insertion Sort - O(n2)
+-Selection Sort - O(n^2)
+-Quick sort - O(n log(n))
+-Merge sort - O(n log(n))
+Can we do better?  
+
+Yes we can but not by making comparisons.  
+
+
+*/
