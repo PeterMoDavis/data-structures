@@ -1383,6 +1383,7 @@ class WeightedGraph {
     let path = []; //to return at end
     let smallest;
     //build up initial state
+
     for (let vertex in this.adjacencyList) {
       if (vertex === start) {
         distances[vertex] = 0;
@@ -1484,3 +1485,33 @@ Using past knowledge to make a future problem easier.
 MEMOIZATION
 Storing the results of expensive function calls and returning the cached result when the same inputs occur again
 */
+
+function fib(n, memo = []) {
+  if (memo[n] !== undefined) return memo[n];
+  if (n <= 2) return 1;
+  var res = fib(n - 1, memo) + fib(n - 2, memo);
+  memo[n] = res;
+  return res;
+}
+
+/* 
+We've Been Working Top Down.
+but there's another way
+Bottom-up!
+
+TABULATION
+Storing the result of a previous result in a 'table' (usually an array)
+
+Usually done using iteration
+
+Better space complexity can be achieved using tabulation
+*/
+
+function fib(n) {
+  if (n <= 2) return 1;
+  var fibNums = [0, 1, 1];
+  for (var i = 3; i <= n; i++) {
+    fibNums[i] = fibNums[i - 1] + fibNums[i - 2];
+  }
+  return fibNums[n];
+}
